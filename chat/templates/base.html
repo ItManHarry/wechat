@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+{# 使用with context导入宏函数文件 #}
+{% from 'macros/_macro.html' import static_file with context %}
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>{%block title%}Base Page{%endblock%}</title>
+    <!-- 导入icon&css -->
+    {{ static_file('icon', 'image/icon/favicon.ico') }}
+    {{ static_file('css', 'css/semantic.min.css') }}
+    {{ static_file('css', 'css/jquery-confirm.min.css') }}
+    <!-- 子页面自己的css -->
+    {%block links%}{%endblock%}
+    <!-- 导入js -->
+    {{ static_file('js', 'js/jquery-3.6.0.min.js') }}
+    {{ static_file('js', 'js/semantic.min.js') }}
+    {{ static_file('js', 'js/jquery-confirm.min.js') }}
+    <!-- 子页面自己的js -->
+    {%block scripts%}{%endblock%}
+    <!-- 自定义style -->
+    {%block styles%}{%endblock%}
+</head>
+<body>
+<header>{%block header%}{% include '_nav.html'%}{%endblock%}</header>
+<main>{%block main%}{%endblock%}</main>
+<footer>{%block footer%}{%endblock%}</footer>
+</body>
+</html>
