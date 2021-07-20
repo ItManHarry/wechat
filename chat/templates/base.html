@@ -9,13 +9,13 @@
     <title>{%block title%}Base Page{%endblock%}</title>
     <!-- 导入icon&css -->
     {{ static_file('icon', 'image/icon/favicon.ico') }}
-    {{ static_file('css', 'css/semantic.min.css') }}
+    {{ static_file('css', 'semantic-ui/semantic.min.css') }}
     {{ static_file('css', 'css/jquery-confirm.min.css') }}
     <!-- 子页面自己的css -->
     {%block links%}{%endblock%}
     <!-- 导入js -->
     {{ static_file('js', 'js/jquery-3.6.0.min.js') }}
-    {{ static_file('js', 'js/semantic.min.js') }}
+    {{ static_file('js', 'semantic-ui/semantic.min.js') }}
     {{ static_file('js', 'js/jquery-confirm.min.js') }}
     <!-- 子页面自己的js -->
     {%block scripts%}{%endblock%}
