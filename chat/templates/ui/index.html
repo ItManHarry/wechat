@@ -214,5 +214,78 @@
     <input type="text" placeholder="Search...">
     <button class="ui button green">Search</button>
   </div>
+  <hr>
+  <h1>图片</h1>
+  Disabled image :<img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui tiny disabled image"><br>
+  Link Image : <br>
+  <a href="https://baidu.com" class="ui tiny image" target="_blank">
+    <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui tiny image"><br>
+  </a><br>
+  Avatar Image : <br>
+  <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui avatar image"><br>
+  Tiny Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui tiny image"><br>
+  Rounded Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui small rounded image"><br>
+  Circular Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui small circular image"><br>
+  Small Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui small image"><br>
+  Large Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui large image"><br>
+  Standard Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui image">
+  Fluid Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui fluid image"><br>
+  Top Aligned Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui top aligned small image"><span>Top Image</span><br>
+  Middle Aligned Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui middle aligned small image"><span>Middle Image</span><br>
+  Bottom Aligned Image : <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui bottom aligned small image"><span>Bottom Image</span><br>
+  <hr>
+  <h1>标题-样式</h1>
+  <h1 class="ui header">Header 1</h1>
+  <h2 class="ui header">Header 2</h2>
+  <h3 class="ui header">Header 3</h3>
+  <h4 class="ui header">Header 4</h4>
+  <h5 class="ui header">Header 5</h5>
+  <div class="ui tiny header">Tiny</div>
+  <div class="ui small header">Small</div>
+  <div class="ui medium header">Medium</div>
+  <div class="ui large header">Large</div>
+  <div class="ui huge header">Huge</div>
+  <h1 class="ui red header">Header 1</h1>
+  <h2 class="ui green header">Header 2</h2>
+  <h3 class="ui yellow header">Header 3</h3>
+  <h4 class="ui blue header">Header 4</h4>
+  <h5 class="ui black header">Header 5</h5>
+  <div class="ui inverted segment">
+    <h1 class="ui red inverted header">Header 1</h1>
+    <h2 class="ui green inverted header">Header 2</h2>
+    <h3 class="ui yellow inverted header">Header 3</h3>
+    <h4 class="ui blue inverted header">Header 4</h4>
+    <h5 class="ui black inverted header">Header 5</h5>
+  </div>
+  <hr>
+  <h1>标题-组合</h1>
+  <h1 class="ui header">Header 1<div class="sub header">Sub Header</div></h1>
+  <h2 class="ui header">Header 2<div class="sub header">Sub Header</div></h2>
+  <h3 class="ui header">Header 3<div class="sub header">Sub Header</div></h3>
+  <h4 class="ui header">Header 4<div class="sub header">Sub Header</div></h4>
+  <h5 class="ui header">Header 5<div class="sub header">Sub Header</div></h5>
+  <h1 class="ui header">
+    <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui image">
+    <div class="content">Content</div>
+  </h1>
+  <h2 class="ui header">
+    <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui image">
+    <div class="content">Content</div>
+  </h2>
+  <h3 class="ui header">
+    <img src="{{url_for('static', filename='image/bg.jpg')}}" class="ui image">
+    <div class="content">Content</div>
+  </h3>
+  <h2 class="ui header">
+    <i class="icon plug"></i>
+    <div class="content">Plug</div>
+  </h2>
+  <h3 class="ui dividing header">Dividing Header</h3>
+  <h3 class="ui block header">Block Header</h3>
+  <h2 class="ui icon header">
+    <i class="icon setting"></i>
+    <div class="content">Setting</div>
+    <div class="sub header">Setting you account!</div>
+  </h2>
 </div>
 {% endblock %}
