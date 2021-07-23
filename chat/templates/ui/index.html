@@ -480,5 +480,123 @@
       <p>For the test , go go go !</p>
     </div>
   </div>
+  <hr>
+  <h1>列表-样式</h1>
+  <div class="ui list">
+    <div class="item">list1</div>
+    <div class="item">list2</div>
+    <div class="item">list3</div>
+  </div>
+  <ul class="ui list">
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ul>
+  <ol class="ui list">
+    <li>item</li>
+    <li>item</li>
+    <li>item</li>
+  </ol>
+  <ol class="ui list">
+    <li value="a">item</li>
+    <li value="b">item</li>
+    <li value="c">item</li>
+  </ol>
+  <div class="ui relaxed list">
+    <div class="item">item</div>
+    <div class="item">item</div>
+    <div class="item">item</div>
+  </div>
+  <div class="ui divided list">
+    <div class="item">item</div>
+    <div class="item">item</div>
+    <div class="item">item</div>
+    <div class="item">item</div>
+  </div>
+  <div class="ui link list">
+    <a href="#" class="active item">link item</a>
+    <a href="#" class="item">link item</a>
+    <a href="#" class="item">link item</a>
+    <a href="#" class="item">link item</a>
+  </div>
+  <h1>列表-组合</h1>
+  <div class="ui list">
+    <div class="item">
+      <div class="header">Title 1</div>
+      <div class="description">Description 1</div>
+    </div>
+    <div class="item">
+      <div class="header">Title 2</div>
+      <div class="description">Description 2</div>
+    </div>
+    <div class="item">
+      <div class="header">Title 3</div>
+      <div class="description">Description 3</div>
+    </div>
+  </div>
+  <div class="ui list">
+    <div class="item">
+      <i class="icon help"></i>
+      <div class="content">
+        <div class="header">Question</div>
+        <div class="description">Question Description</div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="icon user"></i>
+      <div class="content">
+        <div class="header">User</div>
+        <div class="description">User Description</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui list">
+    <div class="item">
+      <image src="{{url_for('static', filename='image/bg.jpg')}}" class="ui tiny image"/>
+      <div class="content">
+        <div class="header">Question</div>
+        <div class="description">Question Description</div>
+      </div>
+    </div>
+    <div class="item">
+      <image src="{{url_for('static', filename='image/bg.jpg')}}" class="ui tiny image"/>
+      <div class="content">
+        <div class="header">User</div>
+        <div class="description">User Description</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui animated list">
+    <div class="item">
+      <i class="icon help"></i>
+      <div class="content">
+        <div class="header">Question</div>
+        <div class="description">Question Description</div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="icon user"></i>
+      <div class="content">
+        <div class="header">User</div>
+        <div class="description">User Description</div>
+      </div>
+    </div>
+  </div>
+  <div class="ui big list">
+    <div class="item">
+      <i class="icon help"></i>
+      <div class="content">
+        <div class="header">Question</div>
+        <div class="description">Question Description</div>
+      </div>
+    </div>
+    <div class="item">
+      <i class="icon user"></i>
+      <div class="content">
+        <div class="header">User</div>
+        <div class="description">User Description</div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
