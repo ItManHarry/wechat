@@ -17,6 +17,10 @@
     {{ static_file('js', 'js/jquery-3.6.0.min.js') }}
     {{ static_file('js', 'semantic-ui/semantic.min.js') }}
     {{ static_file('js', 'js/jquery-confirm.min.js') }}
+    <!-- 生成执行时间渲染函数 -->
+    {{ moment.include_moment(local_js=url_for('static',filename='js/moment/moment-with-locales.js')) }}
+    <!-- 设置自动识别显示语言 -->
+    {{ moment.locale(auto_detect=True) }}
     <!-- 子页面自己的js -->
     {%block scripts%}{%endblock%}
     <!-- 自定义style -->
