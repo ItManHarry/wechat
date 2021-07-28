@@ -1,12 +1,12 @@
 from flask import Flask, render_template
-from chat.config import setting
+from chat.config import settings
 from chat.plugins import db, moment
 # 动态创建App实例
-def create_app(setting_name=None):
-    if setting_name == None:
-        setting_name = 'dev_setting'
+def create_app(setting=None):
+    if setting == None:
+        setting = 'dev_setting'
     app = Flask('chat')
-    app.config.from_object(setting[setting_name])
+    app.config.from_object(settings[setting])
     register_app_global_url(app)
     register_app_plugins(app)
     register_app_views(app)
