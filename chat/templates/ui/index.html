@@ -1,8 +1,16 @@
 {% extends 'base.html'%}
 {% block title %}Semantic UI{% endblock%}
+<script>
+  {% block script %}
+    {{ super() }}
+    var ui = 'ui'
+  {% endblock %}
+</script>
 {% block main %}
 <!-- url : https://zijieke.com/d/86 -->
 <div class="ui segment">
+  Image path is : <h3 class="ui header">{{user.gravatar}}</h3>
+  My avatar : <img src="{{user.gravatar}}">
   <h1>按钮样式</h1>
   <button class="ui button">实心按钮</button>
   <button class="ui button basic">空心按钮</button>
