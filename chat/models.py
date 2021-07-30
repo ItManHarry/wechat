@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 class User(db.Model):
     id = db.Column(db.String(32), primary_key=True)
-    timestamp = db.Column(db.DateTime, defautl=datetime.utcnow(), index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     code = db.Column(db.String(32), unique=True, index=True)
     name = db.Column(db.String(32))
     password_hash = db.Column(db.String(128))
