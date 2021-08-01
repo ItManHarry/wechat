@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, url_for
 import click, uuid
 from chat.config import settings
 from chat.plugins import db, moment, socketio
@@ -17,9 +17,9 @@ def create_app(setting=None):
     register_app_commands(app)
     return app
 def register_app_global_url(app):
-    @app.route('/chat/index')
+    @app.route('/')
     def index():
-        return '<h1>Chat Index</h1>'
+        return redirect(url_for('main.index'))
     @app.route('/ui/index')
     def ui():
         user = User.query.first()
@@ -39,7 +39,9 @@ def register_app_shell_context(app):
         return dict(db=db)
 def register_app_views(app):
     from chat.views.auth import bp_auth
+    from chat.views.main import bp_main
     app.register_blueprint(bp_auth, url_prefix='/auth')
+    app.register_blueprint(bp_main, url_prefix='/main')
 def register_app_commands(app):
     @app.cli.command()
     @click.option('--username', prompt=True, help='管理员账号')
