@@ -1,11 +1,12 @@
 from chat.plugins import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
+from flask_login import UserMixin
 import hashlib
 '''
     系统用户
 '''
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column(db.String(32), primary_key=True)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     code = db.Column(db.String(32), unique=True, index=True)

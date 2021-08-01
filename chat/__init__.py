@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 import click, uuid
 from chat.config import settings
-from chat.plugins import db, moment, socketio
+from chat.plugins import db, moment, socketio, login_manager
 from chat.models import User
 # 动态创建App实例
 def create_app(setting=None):
@@ -33,6 +33,7 @@ def register_app_plugins(app):
     db.init_app(app)
     moment.init_app(app)
     socketio.init_app(app)
+    login_manager.init_app(app)
 def register_app_shell_context(app):
     @app.shell_context_processor
     def app_shell_context():

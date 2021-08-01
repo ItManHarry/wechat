@@ -1,7 +1,27 @@
-{% extends 'base.html'%}
-{% block title %}系统登录{% endblock%}
+{% extends 'base.html' %}
+{% block title %}Chat Room{% endblock %}
+<script>
+  {{ super() }}
+
+</script>
 {% block main %}
-<div class="ui segment">
-  <h2>System Login</h2>
-</div>
+    <div class="ui center aligned container">
+        <div class="row" style="margin-top:100px;">
+            <div class="column">
+                <div class="ui left icon input">
+                    <i class="ui user icon"></i>
+                    <input type="text" placeholder="User name">
+                </div><br><br>
+                <div class="ui left icon input">
+                    <i class="ui key icon"></i>
+                    <input type="password" placeholder="Password">
+                </div><br><br>
+                <small>没有账号?&nbsp;&nbsp;</small><a href="#">现在注册</a>&nbsp;&nbsp;
+                <div class="ui animated green button">
+                    <div class="content visible">登录</div>
+                    <div class="content hidden"><i class="sign-in icon"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -29,8 +29,16 @@
     <script>{%block script %}var socket = io(){% endblock %}</script>
 </head>
 <body>
-<header>{%block header%}{% include '_nav.html'%}{%endblock%}</header>
+<header>
+    {%block header%}
+        {% include '_nav.html'%}
+    {%endblock%}
+</header>
 <main>{%block main%}{%endblock%}</main>
-<footer>{%block footer%}{%endblock%}</footer>
+<footer>
+    {%block footer%}
+        {% include '_footer.html'%}
+    {%endblock%}
+</footer>
 </body>
 </html>
