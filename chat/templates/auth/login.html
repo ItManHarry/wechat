@@ -1,14 +1,39 @@
 {% extends 'base.html' %}
 {% block title %}Chat Room{% endblock %}
-<script>
-  {{ super() }}
-
-</script>
 {% block main %}
     <div class="ui center aligned container">
         <div class="row" style="margin-top:100px;">
             <div class="column">
-                <div class="ui left icon input">
+                <form method="post" class="ui form">
+                    {{form.csrf_token}}
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="ui user icon"></i>
+                            {{form.code()}}
+                        </div>
+                        {% for message in form.code.errors %}
+                            <small>
+                                {{ message }}
+                            </small>
+                        {% endfor %}
+                    </div>
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="ui key icon"></i>
+                            {{form.password()}}
+                        </div>
+                        {% for message in form.password.errors %}
+                            <small>
+                                {{ message }}
+                            </small>
+                        {% endfor %}
+                    </div>
+                    <div class="field">
+                        <small>没有账号?&nbsp;&nbsp;</small><a href="#">现在注册</a>&nbsp;&nbsp;
+                        {{form.submit(class='ui submit button')}}
+                    </div>
+                </form>
+                <!--div class="ui left icon input">
                     <i class="ui user icon"></i>
                     <input type="text" placeholder="User name">
                 </div><br><br>
@@ -20,7 +45,7 @@
                 <div class="ui animated green button">
                     <div class="content visible">登录</div>
                     <div class="content hidden"><i class="sign-in icon"></i></div>
-                </div>
+                </div-->
             </div>
         </div>
     </div>
