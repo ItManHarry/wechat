@@ -31,6 +31,9 @@
                     <div class="field">
                         <small>没有账号?&nbsp;&nbsp;</small><a href="#">现在注册</a>&nbsp;&nbsp;
                         {{form.submit(class='ui submit button')}}
+                        {% for message in get_flashed_messages() %}
+                            <div class="ui label red"><small>{{ message }}</small></div>
+                        {% endfor %}
                     </div>
                 </form>
                 <!--div class="ui left icon input">
