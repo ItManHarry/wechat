@@ -1,9 +1,42 @@
 {% extends 'base.html' %}
 {% block title %}Chat Room{% endblock %}
 <script>
-  {{ super() }}
-
+    {%block script %}
+    {{ super() }}
+    $(function(){
+        //发送消息
+        $('#message').bind('keydown', function(e){
+            var message = $.trim($(this).val())
+            var code = e.keyCode || e.which || e.charCode
+            if(code == 13 && message != ''){
+                alert(message)
+                e.preventDefault()
+                socket.emit('new message', message)
+                $('#message').val('')
+            }
+        })
+    })
+    {% endblock %}
 </script>
 {% block main %}
-
+    {% if current_user.is_authenticated %}
+        <div class="ui right aligned container" style="margin-top:20px;">
+           <div class="ui teal button circular animated">
+            <div class="content visible"><i class="icon sign-out"></i></div>
+            <div class="content hidden">登出</div>
+          </div>
+        </div>
+        <div class="ui container" style="margin-top:20px;">
+            <div class="ui form">
+              <div class="field">
+                <label>输入消息</label>
+                <textarea id="message" rows="4" placeholder="请输入消息后按回车发送......"></textarea>
+              </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="ui floating message">
+            请<a href="{{url_for('auth.login')}}">登录</a>后发送消息!
+        </div>
+    {% endif %}
 {% endblock %}

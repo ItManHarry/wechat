@@ -12,9 +12,9 @@
                             {{form.code()}}
                         </div>
                         {% for message in form.code.errors %}
-                            <small>
-                                {{ message }}
-                            </small>
+                            <div class="ui pointing red label">
+                                <small>{{ message }}</small>
+                            </div>
                         {% endfor %}
                     </div>
                     <div class="field">
@@ -23,9 +23,9 @@
                             {{form.password()}}
                         </div>
                         {% for message in form.password.errors %}
-                            <small>
-                                {{ message }}
-                            </small>
+                            <div class="ui pointing red label">
+                                <small>{{ message }}</small>
+                            </div>
                         {% endfor %}
                     </div>
                     <div class="field">
@@ -36,19 +36,6 @@
                         {% endfor %}
                     </div>
                 </form>
-                <!--div class="ui left icon input">
-                    <i class="ui user icon"></i>
-                    <input type="text" placeholder="User name">
-                </div><br><br>
-                <div class="ui left icon input">
-                    <i class="ui key icon"></i>
-                    <input type="password" placeholder="Password">
-                </div><br><br>
-                <small>没有账号?&nbsp;&nbsp;</small><a href="#">现在注册</a>&nbsp;&nbsp;
-                <div class="ui animated green button">
-                    <div class="content visible">登录</div>
-                    <div class="content hidden"><i class="sign-in icon"></i></div>
-                </div-->
             </div>
         </div>
     </div>
