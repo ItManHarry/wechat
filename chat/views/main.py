@@ -13,6 +13,7 @@ def index():
     return render_template('main/index.html')
 @socketio.on('new message')
 def new_message(message):
+    print('New message send ...')
     m = Message(
         id=uuid.uuid4().hex,
         content=message,

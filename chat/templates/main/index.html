@@ -9,24 +9,28 @@
             var message = $.trim($(this).val())
             var code = e.keyCode || e.which || e.charCode
             if(code == 13 && message != ''){
-                alert(message)
+                //alert(message)
                 e.preventDefault()
                 socket.emit('new message', message)
                 $('#message').val('')
             }
         })
     })
+    socket.on('new message', function(data){
+        $('#messages').append(data.message_html)
+    })
     {% endblock %}
 </script>
 {% block main %}
     {% if current_user.is_authenticated %}
         <div class="ui right aligned container" style="margin-top:20px;">
-           <div class="ui teal button circular animated">
+           <a class="ui teal button circular animated" href="{{url_for('auth.logout')}}">
             <div class="content visible"><i class="icon sign-out"></i></div>
             <div class="content hidden">登出</div>
-          </div>
+          </a>
         </div>
         <div class="ui container" style="margin-top:20px;">
+            <div class="ui segment" id = "messages"></div>
             <div class="ui form">
               <div class="field">
                 <label>输入消息</label>
