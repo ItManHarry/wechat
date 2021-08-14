@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Chat Room{% endblock %}
+{% block main %}
+    <div class="ui left aligned container">
+        <div class="row" style="margin-top:100px;">
+            <div class="column">
+                <form method="post" class="ui form">
+                    {{form.csrf_token}}
+                    <div class="two fields">
+                        <div class="field">
+                            {{form.code.label}}
+                            {{form.code(placeholder='账号')}}
+                            {% for message in form.code.errors %}
+                                <div class="ui pointing red label">
+                                    <small>{{ message }}</small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            {{form.email.label}}
+                            {{form.email(placeholder='邮箱')}}
+                             {% for message in form.email.errors %}
+                                <div class="ui pointing red label">
+                                    <small>{{ message }}</small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            {{form.password.label}}
+                            {{form.password(placeholder='密码')}}
+                             {% for message in form.password.errors %}
+                                <div class="ui pointing red label">
+                                    <small>{{ message }}</small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="field">
+                            {{form.password_confirm.label}}
+                            {{form.password_confirm(placeholder='确认密码')}}
+                             {% for message in form.password_confirm.errors %}
+                                <div class="ui pointing red label">
+                                    <small>{{ message }}</small>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="field">
+                        {{form.submit(class='ui submit primary inverted button')}}
+                        {% for message in get_flashed_messages() %}
+                            <div class="ui label green"><small>{{ message }}</small></div>
+                        {% endfor %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

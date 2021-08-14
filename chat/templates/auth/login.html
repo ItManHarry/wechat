@@ -9,7 +9,7 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="ui user icon"></i>
-                            {{form.code()}}
+                            {{form.code(placeholder='登录账号......')}}
                         </div>
                         {% for message in form.code.errors %}
                             <div class="ui pointing red label">
@@ -20,7 +20,7 @@
                     <div class="field">
                         <div class="ui left icon input">
                             <i class="ui key icon"></i>
-                            {{form.password()}}
+                            {{form.password(placeholder='登录密码......')}}
                         </div>
                         {% for message in form.password.errors %}
                             <div class="ui pointing red label">
@@ -29,8 +29,8 @@
                         {% endfor %}
                     </div>
                     <div class="field">
-                        <small>没有账号?&nbsp;&nbsp;</small><a href="#">现在注册</a>&nbsp;&nbsp;
-                        {{form.submit(class='ui submit button')}}
+                        <small>没有账号?&nbsp;&nbsp;</small><a href="{{url_for('auth.register')}}">现在注册</a>&nbsp;&nbsp;
+                        {{form.submit(class='ui submit green inverted button')}}
                         {% for message in get_flashed_messages() %}
                             <div class="ui label red"><small>{{ message }}</small></div>
                         {% endfor %}
