@@ -12,13 +12,13 @@ def index():
         return redirect(url_for('auth.login'))
     return render_template('main/index.html')
 @socketio.on('new message')
-def new_message(message):
+def new_message(message_str):
     print('New message send ...')
-    m = Message(
+    message = Message(
         id=uuid.uuid4().hex,
-        content=message,
+        content=message_str,
         sender_id=current_user.id
     )
-    db.session.add(m)
+    db.session.add(message)
     db.session.commit()
     emit('new message', {'message_html': render_template('main/_message.html', message=message)}, broadcast=True)
