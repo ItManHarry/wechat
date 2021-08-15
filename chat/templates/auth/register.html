@@ -47,10 +47,11 @@
                         </div>
                     </div>
                     <div class="field">
-                        {{form.submit(class='ui submit primary inverted button')}}
+                        {{form.submit(class='ui submit green inverted button')}}
                         {% for message in get_flashed_messages() %}
                             <div class="ui label green"><small>{{ message }}</small></div>
                         {% endfor %}
+                         <small>已有账号?&nbsp;&nbsp;</small><a href="{{url_for('auth.login')}}">马上登录</a>&nbsp;
                     </div>
                 </form>
             </div>
