@@ -1,11 +1,25 @@
-<!--div class="ui menu pointing">
-  <a class="active item">
-    Home
-  </a>
-  <a class="item">
-    Messages
-  </a>
-  <a class="item">
-    Friends
-  </a>
-</div-->
+{#
+<div class="ui container" style="margin-top:20px;">
+    <i class="icon big grey home"></i>
+    {% if current_user.is_authenticated %}
+        <a class="ui teal circular animated right floated button" href="{{url_for('auth.logout')}}">
+            <div class="content visible"><i class="icon sign-out"></i></div>
+            <div class="content hidden">登出</div>
+        </a>
+    {% endif %}
+</div>
+#}
+<div class="ui container" style="margin-top:20px;">
+    <div class="ui secondary pointing menu">
+      <a class="item active">
+        <i class="icon home"></i>&nbsp;&nbsp;Home
+      </a>
+      {% if current_user.is_authenticated %}
+      <div class="right menu">
+        <a class="ui item" href="{{url_for('auth.logout')}}">
+          Logout&nbsp;&nbsp;<i class="icon sign-out"></i>
+        </a>
+      </div>
+      {% endif %}
+    </div>
+</div>

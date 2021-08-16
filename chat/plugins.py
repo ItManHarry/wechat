@@ -6,6 +6,9 @@ db = SQLAlchemy()
 moment = Moment()
 socketio = SocketIO()
 login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
+login_manager.login_message = '登录后才能进行相关操作!!!'
+login_manager.login_message_category = 'warning'
 @login_manager.user_loader
 def load_user(user_id):
     from chat.models import User
