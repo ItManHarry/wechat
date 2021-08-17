@@ -1,7 +1,7 @@
 from flask import Flask, render_template, redirect, url_for
 import click, uuid
 from chat.config import settings
-from chat.plugins import db, moment, socketio, login_manager
+from chat.plugins import db, moment, socketio, login_manager, oauth
 from chat.models import User
 # 动态创建App实例
 def create_app(setting=None):
@@ -19,7 +19,7 @@ def create_app(setting=None):
 def register_app_global_url(app):
     @app.route('/')
     def index():
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.home'))
     @app.route('/ui/index')
     def ui():
         user = User.query.first()
@@ -34,6 +34,7 @@ def register_app_plugins(app):
     moment.init_app(app)
     socketio.init_app(app)
     login_manager.init_app(app)
+    oauth.init_app(app)
 def register_app_shell_context(app):
     @app.shell_context_processor
     def app_shell_context():
@@ -41,8 +42,10 @@ def register_app_shell_context(app):
 def register_app_views(app):
     from chat.views.auth import bp_auth
     from chat.views.main import bp_main
+    from chat.views.oauth import bp_oauth
     app.register_blueprint(bp_auth, url_prefix='/auth')
     app.register_blueprint(bp_main, url_prefix='/main')
+    app.register_blueprint(bp_oauth, url_prefix='/oauth')
 def register_app_commands(app):
     @app.cli.command()
     @click.option('--username', prompt=True, help='管理员账号')

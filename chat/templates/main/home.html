@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block title %}Chat Room Home Page{% endblock %}
 {% block main %}
-
 <div class="ui container" style="margin-top:20px;">
-    <div class="ui placeholder segment">
+    <div class="ui stackable placeholder segment">
       <div class="ui two column stackable center aligned grid">
         <div class="ui vertical divider">Or</div>
         <div class="middle aligned row">
@@ -24,6 +23,8 @@
             <a class="ui green button" href="{{url_for('auth.login')}}">
               Login
             </a>
+            <div class="ui divider"></div>
+            <a class="ui button secondary github" href="{{url_for('oauth.login', provider_name='github')}}">使用Github登录&nbsp;&nbsp;<i class="icon github"></i></a>
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ dev_db = os.getenv('DEV_DB')
 pro_db = os.getenv('PRO_DB')
 class AppGlobalSetting():
     SECRET_KEY = os.getenv('SECRET_KEY', '1234566789wsxcderfv%$#ikujolsdfd')
+    GITHUB_OAUTH_URL = 'http://github.com/login/oauth/authorize'
 class AppDevelopSetting(AppGlobalSetting):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = os.getenv('DEVELOP_DATABASE_URL', dev_db)

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Main Chat Room{% endblock %}
+<script>
+    {%block script %}
+    var socket = io.connect('/anonymous')
+    $(function(){
+        //发送消息
+        $('#message').bind('keydown', function(e){
+            var message = $.trim($(this).val())
+            var code = e.keyCode || e.which || e.charCode
+            if(code == 13 && message != ''){
+                e.preventDefault()
+                socket.emit('new message', message)
+                $('#message').val('')
+            }
+        })
+    })
+    //聊天消息
+    socket.on('new message', function(data){
+        $('#messages').append(data.message_html)
+    })
+    //在线人数
+    socket.on('anonymous user count', function(data){
+        $('#user_count').text(data.count)
+    })
+    {% endblock %}
+</script>
+{% block main %}
+    <div class="ui container" style="margin-top:20px;">
+        <div class="ui segment" id="messages">
+          <span class="ui teal ribbon label">当前在线:(<small id="user_count"></small>)人</span>
+        </div>
+        <div class="ui form">
+          <div class="field">
+            <label>输入消息</label>
+            <textarea id="message" rows="4" placeholder="请输入消息后按回车发送......"></textarea>
+          </div>
+        </div>
+    </div>
+{% endblock %}
