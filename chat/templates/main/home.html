@@ -1,11 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}Chat Room Home Page{% endblock %}
 {% block main %}
-<div class="ui three column centered grid">
-    <div class="three column centered row">
-         <div class="column"><h1 class="ui header">A</h1></div>
-    <div class="column"><h1 class="ui header">B</h1></div>
-    <div class="column"><h1 class="ui header">C</h1></div>
+
+<div class="ui container" style="margin-top:20px;">
+    <div class="ui  segment">
+      <div class="ui two column stackable center aligned grid">
+        <div class="ui vertical divider">Or</div>
+        <div class="middle aligned row">
+          <div class="column">
+            <div class="ui icon header">
+              <i class="user icon"></i>
+              Register As A User
+            </div><br>
+             <a class="ui primary button" href="{{url_for('auth.register')}}">
+              Register
+             </a>
+          </div>
+          <div class="column">
+            <div class="ui icon header">
+              <i class="sign-in icon"></i>
+              Login To The Main Chat Room
+            </div><br>
+            <a class="ui green button" href="{{url_for('auth.login')}}">
+              Login
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
 </div>
 {% endblock %}
