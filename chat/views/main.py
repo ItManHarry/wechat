@@ -16,7 +16,8 @@ def home():
 @bp_main.route('/index')
 @login_required
 def index():
-    return render_template('main/index.html')
+    messages = Message.query.order_by(Message.timestamp).all()
+    return render_template('main/index.html', messages=messages)
 @bp_main.route('/anonymous')
 def anonymous():
     return render_template('main/anonymous.html')

@@ -28,12 +28,18 @@
 {% block main %}
     <div class="ui container" style="margin-top:20px;">
         <div class="ui segment" id="messages">
-          <span class="ui teal ribbon label">当前在线:(<small id="user_count"></small>)人</span>
+            <span class="ui teal ribbon label">当前在线:(<small id="user_count"></small>)人</span>
+            {% for message in messages %}
+            <p>
+                {{message.sender.name}}&nbsp;&nbsp;<small>({{format_time(message.timestamp)}})</small>&nbsp;&nbsp;:<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ message.content }}
+            </p>
+            {% endfor %}
         </div>
         <div class="ui form">
           <div class="field">
             <label>输入消息</label>
-            <textarea id="message" rows="4" placeholder="请输入消息后按回车发送......"></textarea>
+            <textarea id="message" rows="2" placeholder="请输入消息后按回车发送......"></textarea>
           </div>
         </div>
     </div>

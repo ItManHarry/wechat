@@ -8,7 +8,7 @@ import hashlib
 '''
 class User(db.Model, UserMixin):
     id = db.Column(db.String(32), primary_key=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     code = db.Column(db.String(32), unique=True, index=True)
     name = db.Column(db.String(32))
     email = db.Column(db.String(32), unique=True)
@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
 '''
 class Message(db.Model):
     id = db.Column(db.String(32), primary_key=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     content = db.Column(db.Text, nullable=False)
     sender_id = db.Column(db.String(32), db.ForeignKey('user.id'))
     sender = db.relationship('User', back_populates='messages')
@@ -47,7 +47,7 @@ class Message(db.Model):
 '''
 class Log(db.Model):
     id = db.Column(db.String(32), primary_key=True)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     action = db.Column(db.String(128))
     user_id = db.Column(db.String(32), db.ForeignKey('user.id'))
     user = db.relationship('User', back_populates='logs')

@@ -1,3 +1,4 @@
 <p>
-    {{current_user.name}} : {{ message.content }}&nbsp;<small>({{format_time(message.timestamp)}})</small>
+    {{message.sender.name}}&nbsp;&nbsp;<small>({{format_time(message.timestamp)}})</small>&nbsp;&nbsp;:<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;{{ message.content }}
 </p>
