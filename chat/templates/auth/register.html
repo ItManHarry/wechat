@@ -19,7 +19,7 @@
                         <div class="field">
                             {{form.email.label}}
                             {{form.email(placeholder='邮箱')}}
-                             {% for message in form.email.errors %}
+                            {% for message in form.email.errors %}
                                 <div class="ui pointing red label">
                                     <small>{{ message }}</small>
                                 </div>
@@ -30,7 +30,7 @@
                         <div class="field">
                             {{form.password.label}}
                             {{form.password(placeholder='密码')}}
-                             {% for message in form.password.errors %}
+                            {% for message in form.password.errors %}
                                 <div class="ui pointing red label">
                                     <small>{{ message }}</small>
                                 </div>
@@ -39,12 +39,26 @@
                         <div class="field">
                             {{form.password_confirm.label}}
                             {{form.password_confirm(placeholder='确认密码')}}
-                             {% for message in form.password_confirm.errors %}
+                            {% for message in form.password_confirm.errors %}
                                 <div class="ui pointing red label">
                                     <small>{{ message }}</small>
                                 </div>
                             {% endfor %}
                         </div>
+                    </div>
+                    <div class="two fields">
+                        <div class="field">
+                            {{form.website.label}}
+                            {{form.website(placeholder='个人主页')}}
+                        </div>
+                        <div class="field">
+                            {{form.github.label}}
+                            {{form.github(placeholder='GitHub')}}
+                        </div>
+                    </div>
+                    <div class="field">
+                        {{form.bio.label}}
+                        {{form.bio(placeholder='个人简介', rows=3)}}
                     </div>
                     <div class="field">
                         {{form.submit(class='ui submit green inverted button')}}

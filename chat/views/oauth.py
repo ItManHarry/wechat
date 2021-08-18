@@ -1,8 +1,9 @@
 from flask import Blueprint, abort, url_for, redirect, flash
-from flask_login import current_user
+from flask_login import current_user, login_user
 from chat.plugins import oauth, db
+from chat.models import User
 from werkzeug import security
-import os
+import os, uuid
 bp_oauth = Blueprint('oauth', __name__)
 #http://127.0.0.1/oauth/github/callback/
 #client id:5d2aa3fceb9730bda5c5
@@ -20,6 +21,9 @@ github = oauth.remote_app(
 )
 providers = {
     'github': github
+}
+profile_endpoints = {
+    'github': 'user'
 }
 #跳转至第三方认证网址
 @bp_oauth.route('/login/<provider_name>')
@@ -42,6 +46,38 @@ def callback(provider_name):
         access_token = None
     print('Access token is : %s' %access_token)
     if access_token is None:
-        flash('认证失败,请重试！')
-        return redirect(url_for('main.home'))
-    return redirect(url_for('main.home'))
+        flash('认证失败,请使用账号密码登录！')
+        return redirect(url_for('auth.login'))
+    else:
+        #获取用户信息
+        username, website, github, email, bio = get_profile_info(provider, access_token)
+        '''
+        print('User name : ', username)
+        print('Web site : ', website)
+        print('Github : ', github)
+        print('Email : ', email)
+        print('Bio : ', bio)
+        '''
+        user = User.query.filter_by(email=email).first()
+        if user is None:
+            user = User(
+                id=uuid.uuid4().hex,
+                code=username.lower(),
+                name=username.lower(),
+                email=email.lower()
+            )
+            db.session.add(user)
+            db.session.commit()
+        login_user(user, True)
+    return redirect(url_for('main.index'))
+#获取第三方账号信息
+def get_profile_info(provider, access_token):
+    profile_endpoint = profile_endpoints[provider.name]
+    response = provider.get(profile_endpoint, token=access_token)
+    if provider.name == 'github':
+        username = response.data['name']
+        website = response.data['blog']
+        github = response.data['html_url']
+        email = response.data['email']
+        bio = response.data['bio']
+    return username, website, github, email, bio

@@ -63,7 +63,10 @@ def register_app_commands(app):
                 id=uuid.uuid4().hex,
                 code=username.lower(),
                 name=username.lower(),
-                email='jack_chengqian@163.com'
+                email=username+'@163.com',
+                website='http://xxx.com',
+                github='http://github.com/'+username,
+                bio='The system administrator'
             )
             user.set_password(password)
             db.session.add(user)

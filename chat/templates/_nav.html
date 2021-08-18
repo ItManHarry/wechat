@@ -16,9 +16,10 @@
       </a>
       {% if current_user.is_authenticated %}
       <div class="right menu">
-        <a class="ui item" href="{{url_for('auth.logout')}}">
-          Logout&nbsp;&nbsp;<i class="icon sign-out"></i>
-        </a>
+          <span class="ui item"><i class="user icon"></i>&nbsp;&nbsp;{{current_user.name}}</span>
+          <a class="ui item" href="{{url_for('auth.logout')}}">
+            <i class="icon sign-out"></i>&nbsp;&nbsp;Logout
+          </a>
       </div>
       {% endif %}
     </div>

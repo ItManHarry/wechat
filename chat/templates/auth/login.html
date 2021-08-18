@@ -1,42 +1,45 @@
 {% extends 'base.html' %}
 {% block title %}Chat Room{% endblock %}
 {% block main %}
-    <div class="ui center aligned container">
-        <div class="row" style="margin-top:20px;">
-            <div class="column">
-                <form method="post" class="ui form">
-                    {{form.csrf_token}}
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="ui user icon"></i>
-                            {{form.code(placeholder='登录账号......')}}
-                        </div>
-                        {% for message in form.code.errors %}
-                            <div class="ui pointing red label">
-                                <small>{{ message }}</small>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="field">
-                        <div class="ui left icon input">
-                            <i class="ui key icon"></i>
-                            {{form.password(placeholder='登录密码......')}}
-                        </div>
-                        {% for message in form.password.errors %}
-                            <div class="ui pointing red label">
-                                <small>{{ message }}</small>
-                            </div>
-                        {% endfor %}
-                    </div>
-                    <div class="field">
-                        <small>没有账号?&nbsp;&nbsp;</small><a href="{{url_for('auth.register')}}">现在注册</a>&nbsp;&nbsp;
-                        {{form.submit(class='ui submit green inverted button')}}
-                        {% for message in get_flashed_messages() %}
-                            <div class="ui label red"><small>{{ message }}</small></div>
-                        {% endfor %}
-                    </div>
-                </form>
-            </div>
-        </div>
+<div class="ui container" style="margin-top:20px;">
+    <div class="ui center aligned basic segment">
+      <form method="post" class="ui form">
+          {{form.csrf_token}}
+          <div class="field">
+              <div class="ui left icon input">
+                  <i class="ui user icon"></i>
+                  {{form.code(placeholder='登录账号......')}}
+              </div>
+              {% for message in form.code.errors %}
+                  <div class="ui pointing red label">
+                      <small>{{ message }}</small>
+                  </div>
+              {% endfor %}
+          </div>
+          <div class="field">
+              <div class="ui left icon input">
+                  <i class="ui key icon"></i>
+                  {{form.password(placeholder='登录密码......')}}
+              </div>
+              {% for message in form.password.errors %}
+                  <div class="ui pointing red label">
+                      <small>{{ message }}</small>
+                  </div>
+              {% endfor %}
+          </div>
+          <div class="field">
+              <small>没有账号?&nbsp;&nbsp;</small><a href="{{url_for('auth.register')}}">现在注册</a>&nbsp;&nbsp;
+              {{form.submit(class='ui submit green inverted button')}}
+              {% for message in get_flashed_messages() %}
+                  <div class="ui label red"><small>{{ message }}</small></div>
+              {% endfor %}
+          </div>
+        </form>
+        <div class="ui horizontal divider">Or</div>
+        <small>使用第三方登录</small>&nbsp;&nbsp;:&nbsp;&nbsp;
+        <a title="Github" href="{{url_for('oauth.login', provider_name='github')}}">
+            <i class="grey github circular large icon"></i>
+        </a>
     </div>
+</div>
 {% endblock %}

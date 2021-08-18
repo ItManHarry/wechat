@@ -14,11 +14,17 @@ def register():
         code = form.code.data
         email = form.email.data
         password = form.password.data
+        website = form.website.data
+        github = form.github.data
+        bio = form.bio.data
         user = User(
             id=uuid.uuid4().hex,
             code=code.lower(),
             name=code.lower(),
-            email=email.lower()
+            email=email.lower(),
+            website=website.lower(),
+            github=github.lower(),
+            bio=bio
         )
         user.set_password(password)
         db.session.add(user)

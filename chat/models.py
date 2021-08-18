@@ -11,9 +11,12 @@ class User(db.Model, UserMixin):
     timestamp = db.Column(db.DateTime, default=datetime.utcnow(), index=True)
     code = db.Column(db.String(32), unique=True, index=True)
     name = db.Column(db.String(32))
-    email = db.Column(db.String(32))
+    email = db.Column(db.String(32), unique=True)
     email_hash = db.Column(db.String(128))
     password_hash = db.Column(db.String(128))
+    website = db.Column(db.String(32))
+    github = db.Column(db.String(32))
+    bio = db.Column(db.Text())
     messages = db.relationship('Message', back_populates='sender', cascade='all')
     logs = db.relationship('Log', back_populates='user', cascade='all')
     def __init__(self, **kwargs):
