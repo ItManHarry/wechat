@@ -58,13 +58,16 @@ def callback(provider_name):
         print('Email : ', email)
         print('Bio : ', bio)
         '''
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email.lower()).first()
         if user is None:
             user = User(
                 id=uuid.uuid4().hex,
                 code=username.lower(),
                 name=username.lower(),
-                email=email.lower()
+                email=email.lower(),
+                website=website.lower(),
+                github=github.lower(),
+                bio=bio
             )
             db.session.add(user)
             db.session.commit()
