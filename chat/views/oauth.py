@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, url_for, redirect, flash
 from flask_login import current_user, login_user
 from chat.plugins import oauth, db
-from chat.models import User
+from chat.models import User, Log
 from werkzeug import security
 import os, uuid
 bp_oauth = Blueprint('oauth', __name__)
@@ -72,6 +72,10 @@ def callback(provider_name):
             db.session.add(user)
             db.session.commit()
         login_user(user, True)
+        # 写入登录履历
+        log = Log(id=uuid.uuid4().hex, user_id=user.id, action='使用第三方('+provider_name+')登录')
+        db.session.add(log)
+        db.session.commit()
     return redirect(url_for('main.index'))
 #获取第三方账号信息
 def get_profile_info(provider, access_token):
